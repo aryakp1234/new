@@ -24,11 +24,12 @@ def show_account(request):
             # Check if a user with the same username already exists
             if User.objects.filter(username=username).exists():
                 # If a user with the same username exists, display an error message
-                messages.error(request, 'Username already exists')
+                messages.error(request, 'User already exists!!!')
                 return redirect('register')  # Redirect to the registration page or account creation page
                 
             # Create the user account
             user = User.objects.create_user(
+                name=username,
                 username=username,
                 password=password,
                 email=email
